@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toko Buah Segar</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🍉 Toko Buah Segar</div>
+    <nav class="nav">
+      <a href="#home">Beranda</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#keranjang">Keranjang</a>
+      <a href="#checkout">Checkout</a>
+      <a href="#login">Login</a>
+      <a href="#daftar" class="btn btn-primary">Daftar</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="section hero">
+      <h1>Segar Setiap Hari, Dari Kebun ke Meja Anda</h1>
+      <p>Pilih buah favorit, checkout, lalu bayar via WhatsApp/QR. Simpel! ✨</p>
+      <a href="#katalog" class="btn btn-primary">Belanja Sekarang</a>
+    </section>
+
+    <!-- KATALOG -->
+    <section id="katalog" class="section">
+      <h2>Katalog Buah</h2>
+      <p>Pilih buah dan masukkan jumlah. Item akan ikut terkirim saat checkout.</p>
+
+      <form id="form-katalog" class="grid" action="#keranjang" method="get">
+        <!-- Kartu produk -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?q=80&w=1200&auto=format&fit=crop" alt="Apel Fuji">
+          <div class="card-body">
+            <h3>Apel Fuji</h3>
+            <p class="price">Rp 35.000 / kg</p>
+            <label>Jumlah (kg)
+              <input type="number" name="apel_fuji" min="0" value="0" inputmode="numeric">
+            </label>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=1200&auto=format&fit=crop" alt="Pisang Cavendish">
+          <div class="card-body">
+            <h3>Pisang Cavendish</h3>
+            <p class="price">Rp 28.000 / kg</p>
+            <label>Jumlah (kg)
+              <input type="number" name="pisang_cavendish" min="0" value="0" inputmode="numeric">
+            </label>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=1200&auto=format&fit=crop" alt="Jeruk Sunkist">
+          <div class="card-body">
+            <h3>Jeruk Sunkist</h3>
+            <p class="price">Rp 32.000 / kg</p>
+            <label>Jumlah (kg)
+              <input type="number" name="jeruk_sunkist" min="0" value="0" inputmode="numeric">
+            </label>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1547514701-42782101795e?q=80&w=1200&auto=format&fit=crop" alt="Anggur Merah">
+          <div class="card-body">
+            <h3>Anggur Merah</h3>
+            <p class="price">Rp 75.000 / kg</p>
+            <label>Jumlah (kg)
+              <input type="number" name="anggur_merah" min="0" value="0" inputmode="numeric">
+            </label>
+          </div>
+        </article>
+
+        <div class="grid-col-full actions">
+          <a class="btn" href="#keranjang">Lihat Keranjang</a>
+          <a class="btn btn-primary" href="#checkout">Lanjut Checkout</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- KERANJANG (ringkasan manual) -->
+    <section id="keranjang" class="section">
+      <h2>Keranjang</h2>
+      <p>
+        Karena ini situs statis (HTML+CSS saja), total dan ringkasan tidak dihitung otomatis.
+        <strong>Isi jumlah di Katalog, lalu lanjut ke Checkout</strong> untuk mengirim detail pesanan ke email/WhatsApp.
+      </p>
+      <a class="btn btn-primary" href="#checkout">Lanjut ke Checkout</a>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section id="checkout" class="section">
+      <h2>Checkout</h2>
+      <p>Lengkapi data & pesanan. Pesanan dikirim ke email kamu (via FormSubmit) dan bisa dilanjutkan ke WhatsApp untuk pembayaran.</p>
+
+      <!-- GANTI email_kamu di action dengan emailmu -->
+      <form class="form" action="https://formsubmit.co/email_kamu@contoh.com" method="POST">
+        <!-- FormSubmit options -->
+        <input type="hidden" name="_subject" value="Pesanan Baru - Toko Buah Segar">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Redirect setelah submit -->
+        <input type="hidden" name="_next" value="https://example.com/thanks.html">
+
+        <fieldset>
+          <legend>Data Pembeli</legend>
+          <label>Nama
+            <input type="text" name="nama" placeholder="Nama lengkap" required>
+          </label>
+          <label>Usia
+            <input type="number" name="usia" min="1" placeholder="Usia" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" placeholder="email@domain.com" required>
+          </label>
+          <label>Password (untuk catatan akun manual)
+            <input type="password" name="password" minlength="6" placeholder="Minimal 6 karakter" required>
+          </label>
+          <small class="hint">Catatan: ini **tidak** membuat akun sungguhan; datamu dikirim ke email toko untuk dicatat manual.</small>
+        </fieldset>
+
+        <fieldset>
+          <legend>Alamat & Pengiriman</legend>
+          <label>Alamat Lengkap
+            <textarea name="alamat" rows="3" placeholder="Jalan, RT/RW, Kel/Desa, Kecamatan, Kota/Kab, Kode Pos" required></textarea>
+          </label>
+          <label>Metode Pengiriman
+            <select name="pengiriman" required>
+              <option value="">Pilih</option>
+              <option value="GoSend (Same Day)">GoSend (Same Day)</option>
+              <option value="JNE (Reguler)">JNE (Reguler)</option>
+              <option value="Ambil di Toko">Ambil di Toko</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Pesanan</legend>
+          <div class="grid mini">
+            <label>Apel Fuji (kg)
+              <input type="number" name="apel_fuji" min="0" value="0">
+            </label>
+            <label>Pisang Cavendish (kg)
+              <input type="number" name="pisang_cavendish" min="0" value="0">
+            </label>
+            <label>Jeruk Sunkist (kg)
+              <input type="number" name="jeruk_sunkist" min="0" value="0">
+            </label>
+            <label>Anggur Merah (kg)
+              <input type="number" name="anggur_merah" min="0" value="0">
+            </label>
+          </div>
+          <label>Catatan Tambahan
+            <textarea name="catatan" rows="2" placeholder="Kematangan, penggantian jika habis, dsb."></textarea>
+          </label>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Kirim Pesanan ke Email</button>
+          <!-- WhatsApp deep link (ganti nomor) -->
+          <a class="btn" target="_blank"
+             href="https://wa.me/6281234567890?text=Saya%20ingin%20pesan%20buah%20dari%20Toko%20Buah%20Segar.%20Mohon%20konfirmasi%20total%20dan%20QR%20pembayaran.">
+            Lanjut via WhatsApp
+          </a>
+          <a class="btn" href="#pembayaran">Lihat Metode Pembayaran</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login" class="section">
+      <h2>Login</h2>
+      <p>Versi statis: kirim kredensial ini ke email toko untuk verifikasi manual.</p>
+      <form class="form" action="https://formsubmit.co/email_kamu@contoh.com" method="POST">
+        <input type="hidden" name="_subject" value="Login Permintaan - Toko Buah Segar">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://example.com/thanks.html">
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <button type="submit" class="btn btn-primary">Kirim Login</button>
+      </form>
+    </section>
+
+    <!-- DAFTAR -->
+    <section id="daftar" class="section">
+      <h2>Daftar Akun</h2>
+      <p>Versi statis: data pendaftaran terkirim ke email toko untuk dibuatkan akun manual.</p>
+      <form class="form" action="https://formsubmit.co/email_kamu@contoh.com" method="POST">
+        <input type="hidden" name="_subject" value="Pendaftaran Akun Baru - Toko Buah Segar">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://example.com/thanks.html">
+        <label>Nama
+          <input type="text" name="nama" required>
+        </label>
+        <label>Usia
+          <input type="number" name="usia" min="1" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" minlength="6" required>
+        </label>
+        <button type="submit" class="btn btn-primary">Daftar</button>
+      </form>
+    </section>
+
+    <!-- PEMBAYARAN -->
+    <section id="pembayaran" class="section">
+      <h2>Pembayaran</h2>
+      <div class="pay-grid">
+        <div class="pay-box">
+          <h3>QRIS (Manual)</h3>
+          <img class="qris" src="https://images.unsplash.com/photo-1589985270826-4b7cec9c3a37?q=80&w=1200&auto=format&fit=crop" alt="Contoh QRIS">
+          <p>Setelah transfer, kirim bukti via WhatsApp.</p>
+          <a class="btn" target="_blank" href="https://wa.me/6281234567890?text=Sudah%20bayar%20QRIS,%20berikut%20bukti%20pembayaran.">Kirim Bukti</a>
+        </div>
+        <div class="pay-box">
+          <h3>Transfer Bank</h3>
+          <ul class="banks">
+            <li><strong>BCA</strong> 1234567890 a.n. Toko Buah Segar</li>
+            <li><strong>BNI</strong> 9876543210 a.n. Toko Buah Segar</li>
+          </ul>
+          <a class="btn" target="_blank" href="https://wa.me/6281234567890?text=Sudah%20transfer,%20mohon%20verifikasi%20pesanan.">Konfirmasi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2025</span> Toko Buah Segar • Situs statis demo (HTML + CSS)</p>
+  </footer>
+</body>
+</html>
